@@ -1,11 +1,13 @@
 let express = require('express')
 let app = express()
-let asgnRoute = require('./routes/asgn-router')
+const PORT = process.env.PORT ||3000
+
 let bodyParser = require('body-parser');
 
 var dotenv = require('dotenv');
 dotenv.config();
 
+let asgnRoute = require('./routes/asgn-router')
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
@@ -14,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true});
 
 
 app.use((req, res, next) =>{
-    console.log(`${new Date().toString()} ===>${req.originalUrl}`, req.body)
+    console.log(`${new Date().toString()} ===>${req.originalUrl}`)
     next();
 })
 app.use(bodyParser.json())
@@ -27,5 +29,7 @@ app.use((req, res, next) =>{
 })
 
 
-const PORT = process.env.PORT ||3000
-app.listen(PORT, () => console.info(`Server has started on ${PORT}`))
+
+app.listen(PORT, ()=> {
+    console.log(`Server has started on port ${PORT}`);
+});

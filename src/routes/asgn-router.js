@@ -15,6 +15,8 @@ router.get('/assignment/:name', (req,res) =>{
     res.send(`You have requested a assignment ${req.params.name}`)
 })
 
+
+
 // POST
 router.post('/assignments', assignmentsController.addAsgn);
 
@@ -31,3 +33,4 @@ router.delete('/assignments', assignmentsController.deleteAsgn);
 
 
 module.exports = router;
+                
