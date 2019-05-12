@@ -2,7 +2,7 @@ var Assignments = require('../models/asgn-model');
 
 
 exports.addAsgn = function(req, res) {
-    // res.send('Calling addAssignments function');
+   
     if(!req.body) {
         return res.status(400).send('Req body missing');
     } 
@@ -20,7 +20,7 @@ exports.addAsgn = function(req, res) {
 }
 
 exports.showAsgn = function(req, res) {
-    // res.send('Calling showOrder function');
+    
     if(!req.query.assignmentName) {
         return res.status(400).send('Missing URL parameter.');
     }
@@ -36,11 +36,11 @@ exports.showAsgn = function(req, res) {
 }
 
 exports.changeAsgn  = function(req, res) {
-    // res.send('Calling changeOrder function');
+   
     if(!req.query.assignmentName) {
         return res.status(400).send('Missing URL parameter.');
     }
-    Assignments.findOneAndUpdate({
+    Assignments.findOneAndReplace({
         assignmentName: req.query.assignmentName
     }, req.body, {new: true})
     .then((doc) => {
@@ -56,7 +56,7 @@ exports.deleteAsgn  = function(req, res) {
     if(!req.query.assignmentName) {
         return res.status(400).send('Missing URL parameter.');
     }
-    Assignments.findOneAndRemove({
+    Assignments.findOneAndDelete({
         assignmentName: req.query.assignmentName
     })
     .then((doc) => {

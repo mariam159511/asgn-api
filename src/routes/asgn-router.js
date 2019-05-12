@@ -17,16 +17,16 @@ router.get('/assignment/:name', (req,res) =>{
 
 
 
-// POST
+
 router.post('/assignments', assignmentsController.addAsgn);
 
-// GET
+
 router.get('/assignments', assignmentsController.showAsgn);
 
-// PUT
+
 router.put('/assignments', assignmentsController.changeAsgn);
 
-// DELETE
+
 router.delete('/assignments', assignmentsController.deleteAsgn);
 
 
